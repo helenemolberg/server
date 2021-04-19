@@ -10,7 +10,6 @@ const requiredString = {
 const imageEntrySchema = new Schema({
     prosjekt: requiredString,
     parsell: Number,
-    kommentar: String,
     kategori: String,
     latitude: {
         type: Number,
@@ -28,7 +27,6 @@ const imageEntrySchema = new Schema({
     GPSImgDirection: Number,
     imageName: requiredString,
     imageType: requiredString,
-    imageURL: String,
     captureDate: {
         type: Date,
         required: true,

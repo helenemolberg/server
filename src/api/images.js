@@ -43,7 +43,6 @@ module.exports = (upload) => {
           let newImage = new ImageEntry({
             prosjekt: req.body.prosjekt,
             parsell: req.body.parsell,
-            kommentar: req.body.kommentar,
             kategori: req.body.kategori,
             latitude: req.body.latitude,
             longitude: req.body.longitude,
@@ -53,7 +52,6 @@ module.exports = (upload) => {
             imageType: req.body.imageType,
             captureDate: req.body.captureDate
           });
-
 
           newImage
             .save()
@@ -114,7 +112,7 @@ module.exports = (upload) => {
                 }
                 
                 // Check if image
-                if (file.contentType === 'image/jpeg' || file.contentType === 'image/png' ) {
+                if (file.contentType === 'image/jpeg' || file.contentType === 'image/png' || file.contentType === 'image/heic') {
                     // Read output to browser
                     const readstream = gfs.createReadStream(file.filename);
                     var bufs = [];
@@ -125,7 +123,7 @@ module.exports = (upload) => {
                         var fbuf = Buffer.concat(bufs);
                         var base64 = (fbuf.toString('base64'));
 
-                        res.send({data: 'data:' + file.contentType + ';base64,' + base64});
+                        res.send('"data:'+ file.contentType + ';base64,' + base64 + '"');
                         // Shows the picture in the browser for server
                         //res.send('<img src="data:image/jpeg;base64,' + base64 + '">') 
                     })

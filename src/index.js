@@ -81,6 +81,11 @@ app.use(middlewares.errorHandler);
 
 const port = process.env.PORT || 1337;
 
+// Sjekk om det er Heroku
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+}
+
 app.listen(port, ()=> {
     console.log(`Listening at http://localhost:${port}`);
 });
