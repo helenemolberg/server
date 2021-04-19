@@ -11,6 +11,7 @@ const imageEntrySchema = new Schema({
     prosjekt: requiredString,
     parsell: Number,
     kategori: String,
+    kommentar: String,
     latitude: {
         type: Number,
         required: true,
