@@ -15,7 +15,7 @@ require('dotenv').config();
 const middlewares = require('./middlewares');
 const images = require('./api/images');
 
-const app = express();
+//const app = express();
 
 // Set up connection to Mongo
 mongoose.connect(process.env.DATABASE_URL, {
@@ -25,7 +25,10 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 app.use(morgan('common'));
 app.use(helmet());
-app.use(cors()); // Any origin can request -> those that use 3000. 
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+})); // Any origin can request -> those that use 3000. 
+app.use(express.json());
 
 // Trengs for form data 
 app.use(function(req, res, next) {
