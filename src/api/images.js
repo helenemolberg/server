@@ -99,7 +99,7 @@ module.exports = (upload) => {
         });
 
     /*
-        Display image - Funker, men ikke på client??
+        Display image 
     */
     imageRouter.route('/image/:filename')
         .get((req, res) => {
@@ -135,9 +135,28 @@ module.exports = (upload) => {
                 }
             });
         });
+        /*
+          GET: Search on parsellnumber
+        */
+    
+    imageRouter.route("/:parsell").get((req, res, next) => {
+      ImageEntry.find({ parsell: req.params.parsell }, (err, files) => {
+        if (!files || files.length === 0) {
+          return res.status(200).json({
+            success: false,
+            message: "No files available",
+          });
+        }
+
+        res.status(200).json({
+          success: true,
+          files,
+        });
+      });
+    });
 
         /*
-            GET: Data between dates
+            GET: Data between dates - not working??
         */
     imageRouter.route('/daterange/:value')
         .get((req, res) => {
