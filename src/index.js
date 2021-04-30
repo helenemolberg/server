@@ -25,10 +25,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 app.use(morgan('common'));
 app.use(helmet());
-app.use(cors({
-    credentials: true, 
-    origin: true
-})); // Any origin can request -> those that use 3000. 
+app.use(cors()); // Any origin can request -> those that use 3000. 
 
 // Trengs for form data 
 app.use(function(req, res, next) {
