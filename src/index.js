@@ -15,7 +15,7 @@ require('dotenv').config();
 const middlewares = require('./middlewares');
 const images = require('./api/images');
 
-//const app = express();
+const app = express();
 
 // Set up connection to Mongo
 mongoose.connect(process.env.DATABASE_URL, {
