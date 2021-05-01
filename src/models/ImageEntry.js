@@ -9,7 +9,9 @@ const requiredString = {
 
 const imageEntrySchema = new Schema({
     prosjekt: requiredString,
-    parsell: Number,
+    parsell: String,
+    profilnr: Number,
+    objektnr: Number,
     kategori: String,
     kommentar: String,
     latitude: {

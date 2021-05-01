@@ -43,6 +43,8 @@ module.exports = (upload) => {
           let newImage = new ImageEntry({
             prosjekt: req.body.prosjekt,
             parsell: req.body.parsell,
+            profilnr: req.body.profilnr,
+            objektnr: req.body.objektnr,
             kommentar: req.body.kommentar,
             kategori: req.body.kategori,
             latitude: req.body.latitude,
