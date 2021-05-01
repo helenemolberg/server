@@ -31,7 +31,7 @@ const imageEntrySchema = new Schema({
     imageName: requiredString,
     imageType: requiredString,
     captureDate: {
-        type: Date,
+        type: String,
         required: true,
     },
 }, {
