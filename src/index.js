@@ -60,12 +60,14 @@ app.get('/', (req, res) => {
 const storage = new GridFsStorage({
     url: process.env.DATABASE_URL,
     file: (req, file) => {
+        console.log(file)
         return new Promise((resolve, reject) => {
             crypto.randomBytes(16, (err, buf) => {
                 if (err){
                     return reject(err);
                 }
-                const filename = file.originalname;
+                const filename = file.filename;
+                console.log(filename);
                 const fileInfo = {
                     filename: filename,
                     bucketName: 'uploads',
